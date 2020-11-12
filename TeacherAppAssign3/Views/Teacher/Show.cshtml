@@ -1,0 +1,24 @@
+﻿<!--//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11 and part 12, Accessed NOV 10 2020
+-->
+@model TeacherAppAssign3.Models.Teacher
+@{
+    ViewBag.Title = "Show";
+}
+<!-- The following is the inforamation on a specific teacher, selected from the List page-->
+<h1>Teacher Information</h1>
+<main>
+    <h2>Teacher First Name:</h2>
+    <p>@Model.Teacherfname</p>
+    <h2>Teacher Last Name:</h2>
+    <p>@Model.Teacherlname</p>
+    <h2>Teacher ID:</h2>
+    <p>@Model.Teacherid</p>
+    <h2>Employee Number:</h2>
+    <p>@Model.Employeenumber</p>
+    <h2>Hire Date:</h2>
+    <p>@Model.Hiredate</p>
+    <h2>Salary:</h2><!--I probably shouldnt include the salary here for privacy reasons but I figured id add it for practice sake-->
+    <p>@Model.Salary $ an hour. </p>
+</main>
+
+ 

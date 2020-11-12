@@ -1,0 +1,19 @@
+﻿<!--//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11 and part 12, Accessed NOV 10 2020
+-->
+<!--The following conencts to the Teachers method-->
+@model IEnumerable<TeacherAppAssign3.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Teachers</h2>
+<p>This page should be showing information about Teachers</p>
+
+<!--This loops through all the teachers in the teacher database and displas information on each-->
+@foreach (var teacher in Model)
+{
+    <!--The File path uses c# to indicate that the part of the URL in the link
+        is the teacher id of the specific teacher, this allows for a show page of EACH individual
+        teacher-->
+    <div><a href="/Teacher/Show/@teacher.Teacherid">@teacher.Teacherfname @teacher.Teacherlname</a></div>
+}
