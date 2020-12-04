@@ -1,0 +1,34 @@
+﻿<!-->Code used taken from Bittle, Christine. Learning C# For Web Development Pt15. Youtube, 3 Dec. 2020, www.youtube.com/watch?v=4jXECEDaAQE&feature=youtu.be&t=1200</!-->
+
+@{
+    ViewBag.Title = "Add";
+}
+<!--A simple for, for adding new student info-->
+<h2>Add Teacher</h2>
+
+
+<form  method="POST" action="/Teacher/Create">
+    <div>
+        <label for="TeacherFname">First Name</label>
+        <input type="text" id="TeacherFname" name="TeacherFname" />
+    </div>
+    <div>
+        <label for="TeacherLname">Last Name</label>
+        <input type="text" id="TeacherLname" name="TeacherLname" />
+    </div>
+    <div>
+        <label for="Employeenumber">Employee Number</label>
+        <input type="text" id="Employeenumber" name="Employeenumber" />
+    </div>
+    <div>
+        <label for="Hiredate">Hire Date</label>
+        <input type="date" id="Hiredate" name="Hiredate" />
+    </div>
+    <div>
+        <label for="Salary">Salary ($ an hour)</label>
+        <input type="number" id="Salary" name="Salary" />
+    </div>
+    <div>
+        <input type="submit" value="Add Teacher" />
+    </div>
+</form>

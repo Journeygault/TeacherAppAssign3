@@ -12,6 +12,23 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+nav{
+    overflow:hidden;
+    margin-bottom:30px;
+}
+.textarea {
     max-width: 280px;
+    float:right
+}
+.navlink{
+    float:left;
+}
+.dellink{
+    float:right;
+    color:red;
+}
+.dellButton {
+    margin:0 auto;
+    display:block;
+    color:red;
 }

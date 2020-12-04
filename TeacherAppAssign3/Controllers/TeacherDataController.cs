@@ -16,7 +16,8 @@ namespace TeacherAppAssign3.Controllers
         private SchoolDbContext teacherdatabase = new SchoolDbContext();
         //api/TeacherData/ListTeachers
         [HttpGet]
-        public IEnumerable <Teacher> ListTeachers ()
+        [Route("api/TeacherData/ListTeachers/{SearchKey?}")]//The question mark makes it an optional perameter
+        public IEnumerable <Teacher> ListTeachers (string Searchkey=null)//string search key allows us to modify sql for search, null means it can not be provided
         {
             //The following connects to the database
             MySqlConnection conn = teacherdatabase.AccessDatabase();
@@ -25,7 +26,12 @@ namespace TeacherAppAssign3.Controllers
             //The following is what allows you to create SQL commands
             MySqlCommand cmd = conn.CreateCommand();
             //The Sql command itself
-            cmd.CommandText = "select * from teachers";//possible capital for teachers
+            cmd.CommandText = "select * from teachers where lower(teacherfname) like lower(@key) " +
+                "or lower(teacherlname) like lower(@key) or lower(concat(teacherfname, ' ', teacherlname)) like lower(@key)";
+
+            cmd.Parameters.AddWithValue("@key","%" + Searchkey + "%"); //using the @ key and this comand we are sanitizing our sql to prevent injection attacks
+            cmd.Prepare();
+
            //The following allows information to actualy be read by the browser 
            //from the sql table 
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -105,7 +111,60 @@ namespace TeacherAppAssign3.Controllers
             //Results: both methods function correctly and allow for the collection of data from all teachers
             //and all individual teachers
         }
-        
-    }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// ////<example>Post:/api/TeacherData/DeleteAuthor/3</example>
+        /// 
+
+        //<summary>
+        /// The following is used to delete a teacher
+        /// //It is effectively the same as the previous method with a few small differences 
+        /// </summary>
+        /// <returns> Doent return anything but effectively removes data</returns>
+        [HttpPost]
+        ///
+        public void DeleteTeacher(int id)
+        {
+            
+            MySqlConnection conn = teacherdatabase.AccessDatabase();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        /// <summary>
+        /// Adds a new teacher, functions the same as delete more or less, with the primary difference being a diferent sql query
+        /// </summary>
+        /// <param name="NewTeacher"></param>
+        [HttpPost]
+        public void AddTeacher(Teacher NewTeacher)
+        {
+            MySqlConnection conn = teacherdatabase.AccessDatabase();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "Insert into teachers (teacherfname,teacherlname,employeenumber,hiredate,salary) " +
+                "values (@TeacherFname,@TeacherLname,@Employeenumber,@Hiredate,@Salary)";
+            //NOTE: I am not using CURRENT_DATE for hire date, as employees are rarely entered into the system on the actual date they are hired
+            //The following subsstantiates all the values in the AddTeacher method
+            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.Teacherfname);
+            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.Teacherlname);
+            cmd.Parameters.AddWithValue("@Employeenumber", NewTeacher.Employeenumber);
+            cmd.Parameters.AddWithValue("@Hiredate", NewTeacher.Hiredate);
+            cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
+
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        //<Results> Successfully adds new teacher info
+    }
+    
 }

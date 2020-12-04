@@ -5,8 +5,14 @@
     ViewBag.Title = "Show";
 }
 <!-- The following is the inforamation on a specific teacher, selected from the List page-->
+<nav>
+    <a class="navlink" href="/Teacher/List">Back to Teachers</a>
+    <a class="dellink" href="/Teacher/DeleteConfirm/@Model.Teacherid">Delete</a>
+</nav>
 <h1>Teacher Information</h1>
+
 <main>
+
     <h2>Teacher First Name:</h2>
     <p>@Model.Teacherfname</p>
     <h2>Teacher Last Name:</h2>

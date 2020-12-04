@@ -1,0 +1,15 @@
+﻿<!--Code used taken from Bittle, Christine. Learning C# For Web Development Pt13. Youtube, 3 Dec. 2020, www.youtube.com/watch?v=sOwP2C08WZE&feature=youtu.be
+-->
+@model TeacherAppAssign3.Models.Teacher
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<nav>
+    <a class="navlink" href="/Teacher/Show/@Model.Teacherid">Cancel</a>
+</nav>
+<h2>Are you sure you want to delete @Model.Teacherfname @Model.Teacherlname</h2>
+<p>This action can not be undone</p>
+<form method="POST" action="/Teacher/Delete/@Model.Teacherid">
+    <button class="dellButton" href="">Confirm Delete</button>
+</form>
+<!--Basic confirmation for deleting a teacher-->

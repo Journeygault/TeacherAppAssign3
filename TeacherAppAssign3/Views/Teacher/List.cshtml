@@ -5,10 +5,14 @@
 @{
     ViewBag.Title = "List";
 }
-
+<nav>
+    <a class="navlink" href="/Teacher/Add">Add New Teacher</a>
+</nav>
 <h2>List of Teachers</h2>
-<p>This page should be showing information about Teachers</p>
-
+<form action="/Teacher/List" method="GET">
+    <input type="text" name="SearchKey"/>
+    <input type="submit" value="Search" />
+</form>
 <!--This loops through all the teachers in the teacher database and displas information on each-->
 @foreach (var teacher in Model)
 {
