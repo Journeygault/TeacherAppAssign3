@@ -12,16 +12,19 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-nav{
-    overflow:hidden;
-    margin-bottom:30px;
+nav {
+    overflow: hidden;
+    margin-bottom: 30px;
+    float: left;
+    margin-right: 15px;
 }
 .textarea {
     max-width: 280px;
     float:right
 }
-.navlink{
-    float:left;
+.navlink {
+    float: left;
+    margin-right: 15px;
 }
 .dellink{
     float:right;

@@ -1,4 +1,4 @@
-﻿//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11 and part 12, Accessed NOV 10 2020
+﻿//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11,12,13,14,15 and part 16, Accessed DEC 10 2020
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -165,6 +165,28 @@ namespace TeacherAppAssign3.Controllers
             conn.Close();
         }
         //<Results> Successfully adds new teacher info
+        public void UpdateTeacher( int id, [FromBody]Teacher TeacherInfo)
+        {
+            MySqlConnection conn = teacherdatabase.AccessDatabase();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "UPDATE teachers set teacherfname=@TeacherFname,teacherlname=@TeacherLname,employeenumber=@Employeenumber,hiredate=@Hiredate,salary=@Salary where teacherid=@TeacherId";// similar to above but the ID is now the slected ID in the browser
+            //NOTE: I am not using CURRENT_DATE for hire date, as employees are rarely entered into the system on the actual date they are hired
+            //The following subsstantiates all the values in the AddTeacher method
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.Teacherfname);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.Teacherlname);
+            cmd.Parameters.AddWithValue("@Employeenumber", TeacherInfo.Employeenumber);
+            cmd.Parameters.AddWithValue("@Hiredate", TeacherInfo.Hiredate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherInfo.Salary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);//problem here?
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+
+        }
     }
     
 }

@@ -216,8 +216,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <None Include="Controllers\READ.md" />
-    <None Include="Controllers\PsudoCode.md" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -266,6 +264,7 @@
     <Content Include="Views\Teacher\Show.cshtml" />
     <Content Include="Views\Teacher\DeleteConfirm.cshtml" />
     <Content Include="Views\Teacher\Add.cshtml" />
+    <Content Include="Views\Teacher\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

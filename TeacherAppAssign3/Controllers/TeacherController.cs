@@ -1,4 +1,4 @@
-﻿//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11 and part 12, Accessed NOV 10 2020
+﻿//REFERENCE: Code used is from Learningc# for webdevelopment part 10,11,12,13,14,15 and part 16, Accessed DEC 10 2020
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +37,9 @@ namespace TeacherAppAssign3.Controllers
         {
             //The Following Is what Collects the information from Teacher Data Controller and sends it to theViews/Teacher/Show
             TeacherDataController controller = new TeacherDataController();
-            Teacher NewTeacher = controller.FindTeacher(id);
+            Teacher SelectedTeacher = controller.FindTeacher(id);
 
-            return View(NewTeacher);
+            return View(SelectedTeacher);
         }
         //Delete confirmation page
         //GET : /Author/DeleteConfirm/{id}
@@ -103,6 +103,39 @@ namespace TeacherAppAssign3.Controllers
 
             
         }
+        //Get : /Teacher/Update/{id}
+        public ActionResult Update(int id)
+        {
+            //The Following Is what Collects the information from Teacher Data Controller and sends it to theViews/Teacher/Show
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(id); 
+           
+            return View(SelectedTeacher);
+        }
+
+        //POST : /Teacher/Update/{id}
+        [HttpPost]
+        public ActionResult Update(int id, string TeacherFname, string TeacherLname, string Employeenumber, DateTime Hiredate, decimal Salary)
+        {
+            //The Following Is more or less the same as previous methods, allowing proper database access to the browser
+
+
+            Teacher TeacherInfo = new Teacher();
+                TeacherInfo.Teacherfname = TeacherFname;
+                TeacherInfo.Teacherlname = TeacherLname;
+                TeacherInfo.Employeenumber = Employeenumber;
+                TeacherInfo.Hiredate = Hiredate;
+                TeacherInfo.Salary = Salary;
+
+                TeacherDataController controller = new TeacherDataController();
+                controller.UpdateTeacher(id, TeacherInfo);
+              //the following redirects to show
+                return RedirectToAction("Show/"+ id);
+            
+          
+        }
+
+
     }
 
 }//Results:This controller routs all required information to the List and Show views, allowing for 
