@@ -1,5 +1,5 @@
 # TeacherAppAssign3
-The following is a simple .NET MVC project using an SQL database, it is one table, and allows for full CRUD for teacher a teachers basic information.
+The following is a simple .NET MVC project using an SQL database, it is one table, and allows for full CRUD for a teachers basic information.
 
 
 
