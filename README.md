@@ -1,4 +1,14 @@
 # TeacherAppAssign3
+The following is a simple .NET MVC project using an SQL database, it is one table, and allows for full CRUD for teacher a teachers basic information.
+
+
+
+
+
+
+
+
+
 Works Cited
 
 Bittle, Christine. “Christinebittle/BlogProject_1.” GitHub, 2020, github.com/christinebittle/BlogProject_1. 
@@ -10,4 +20,4 @@ Bittle, Christine. Learning C# For Web Development Pt14. Youtube, 3 Dec. 2020, w
 Bittle, Christine. Learning C# For Web Development Pt15. Youtube, 3 Dec. 2020, www.youtube.com/watch?v=4jXECEDaAQE&feature=youtu.be&t=1200 
 Bittle, Christine. Learning C# For Web Development Pt16. Youtube, 10 Dec. 2020, www.youtube.com/watch?v=o1ax8rvlFMQ&feature=youtu.be
 
-Thanks for a great semester, I really learnt alot!
+
